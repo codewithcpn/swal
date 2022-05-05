@@ -1,0 +1,37 @@
+<!-- Swal -->
+       <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.32.4/sweetalert2.all.js"></script>
+        <script type="text/javascript" src="js/jquery.min.js"></script>
+
+
+=====  Attach === 
+    
+<?php
+	include 'include/header.php'; 
+if(isset($_POST['submit'])){
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+    $phone = $_POST['phone'];
+    $address = $_POST['address'];
+    $msg = $_POST['msg'];
+  
+     
+    
+
+    $to ="info@maatsaab.in";
+    $from =$email;
+    $subject = "Form Submission";
+    $message = "Name: ".$name."\n"."Email: ".$email."\n"."phone: ".$phone."\n"."Address: ".$address."\n"."\n\n".$msg;
+    $headers = "From: ".$email;
+
+    //  mail($to,$subject,$message,$headers);
+
+
+     if( mail($to,$subject,$message,$headers)){
+        
+            echo '<script> swal("Success","Submit Successfully","success")</script>';
+     }
+     else{
+         echo "Something went wrong"; 
+     }
+}
+?>
